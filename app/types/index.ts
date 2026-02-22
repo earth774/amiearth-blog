@@ -7,3 +7,12 @@ export interface BlogPost {
   tags: string[];
   year: number;
 }
+
+export interface Project {
+  name: string;
+  description: string;
+  tags: string[];
+  githubUrl?: string;
+  liveUrl?: string;
+  stars?: number;
+}

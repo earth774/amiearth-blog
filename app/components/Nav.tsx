@@ -1,5 +1,9 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { Menu, X } from "lucide-react";
+import { useState } from "react";
 
 const navLinks = [
   { href: "/blog", label: "Blog" },
@@ -8,8 +12,10 @@ const navLinks = [
 ];
 
 export function Nav() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
   return (
-    <nav className="flex h-16 flex-col justify-center border-b border-[#E2DDD7] px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 md:px-12">
+    <nav className="relative flex h-16 items-center justify-between border-b border-[#E2DDD7] px-4 sm:px-6 md:px-12">
       <Link
         href="/"
         className="flex items-center gap-2 font-[family-name:var(--font-playfair)] text-[22px] font-bold italic text-[#1A1714]"
@@ -25,7 +31,9 @@ export function Nav() {
           />
         </span>
       </Link>
-      <div className="mt-2 flex gap-6 sm:mt-0 sm:gap-9">
+
+      {/* Desktop nav links - hidden on mobile */}
+      <div className="hidden gap-6 sm:flex sm:gap-9">
         {navLinks.map((link) => (
           <Link
             key={link.href}
@@ -35,6 +43,45 @@ export function Nav() {
             {link.label}
           </Link>
         ))}
+      </div>
+
+      {/* Mobile menu button - visible only on mobile */}
+      <button
+        type="button"
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        className="flex items-center gap-2 font-[family-name:var(--font-literata)] text-[15px] text-[#6B6560] sm:hidden"
+        aria-expanded={mobileMenuOpen}
+        aria-controls="mobile-nav-menu"
+        aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+      >
+        {mobileMenuOpen ? (
+          <X size={20} aria-hidden />
+        ) : (
+          <Menu size={20} aria-hidden />
+        )}
+        <span>{mobileMenuOpen ? "Close" : "Menu"}</span>
+      </button>
+
+      {/* Mobile nav overlay - visible when menu is open */}
+      <div
+        id="mobile-nav-menu"
+        className={`fixed inset-0 top-16 z-50 bg-[#F7F5F0] sm:hidden ${
+          mobileMenuOpen ? "block" : "hidden"
+        }`}
+        aria-hidden={!mobileMenuOpen}
+      >
+        <div className="flex flex-col gap-6 px-4 py-6">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              onClick={() => setMobileMenuOpen(false)}
+              className="font-[family-name:var(--font-literata)] text-[15px] text-[#6B6560] transition-colors hover:text-[#1A1714]"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
       </div>
     </nav>
   );
