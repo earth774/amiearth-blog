@@ -60,18 +60,8 @@ const connectLinks = [
     accent: true,
     icon: Mail,
   },
-  {
-    href: "https://github.com",
-    label: "GitHub ↗",
-    accent: false,
-    icon: Github,
-  },
-  {
-    href: "https://twitter.com",
-    label: "Twitter ↗",
-    accent: false,
-    icon: Twitter,
-  },
+  { href: "https://github.com", label: "GitHub ↗", icon: Github },
+  { href: "https://twitter.com", label: "Twitter ↗", icon: Twitter },
 ];
 
 export default function AboutPage() {
@@ -188,16 +178,13 @@ export default function AboutPage() {
           <div className="mt-5 flex flex-col gap-6 pb-14 sm:flex-row sm:gap-7 md:pb-16">
             {connectLinks.map((link) => {
               const Icon = link.icon;
+              const isExternal = link.href.startsWith("http");
               return (
                 <a
                   key={link.label}
                   href={link.href}
-                  target={link.href.startsWith("http") ? "_blank" : undefined}
-                  rel={
-                    link.href.startsWith("http")
-                      ? "noopener noreferrer"
-                      : undefined
-                  }
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener noreferrer" : undefined}
                   className={`flex items-center gap-2 font-[family-name:var(--font-literata)] text-[15px] transition-colors hover:underline ${
                     link.accent
                       ? "text-[#2D5016] hover:text-[#234012]"
