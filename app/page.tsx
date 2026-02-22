@@ -1,12 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Github } from "lucide-react";
-
-const navLinks = [
-  { href: "/blog", label: "Blog" },
-  { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About" },
-];
+import { Nav } from "@/app/components/Nav";
+import { Footer } from "@/app/components/Footer";
 
 const techStack = [
   "TypeScript",
@@ -16,44 +12,10 @@ const techStack = [
   "Docker",
 ];
 
-const footerLinks = [
-  { href: "/rss", label: "RSS" },
-  { href: "https://twitter.com", label: "Twitter" },
-  { href: "https://github.com", label: "GitHub" },
-];
-
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col bg-[#F7F5F0]">
-      {/* Nav */}
-      <nav className="flex h-16 flex-col justify-center border-b border-[#E2DDD7] px-4 sm:flex-row sm:items-center sm:justify-between sm:px-6 md:px-12">
-        <Link
-          href="/"
-          className="flex items-center gap-2 font-[family-name:var(--font-playfair)] text-[22px] font-bold italic text-[#1A1714]"
-        >
-          Earth
-          <span className="relative flex h-9 w-9 overflow-hidden rounded bg-transparent">
-            <Image
-              src="/images/image-1.png"
-              alt="Earth logo"
-              width={38}
-              height={38}
-              className="object-cover"
-            />
-          </span>
-        </Link>
-        <div className="mt-2 flex gap-6 sm:mt-0 sm:gap-9">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="font-[family-name:var(--font-literata)] text-[15px] text-[#6B6560] transition-colors hover:text-[#1A1714]"
-            >
-              {link.label}
-            </Link>
-          ))}
-        </div>
-      </nav>
+      <Nav />
 
       {/* Hero */}
       <main className="flex flex-1 items-center justify-center py-12 sm:py-16 md:py-20">
@@ -123,27 +85,7 @@ export default function Home() {
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="flex flex-col items-center justify-between gap-4 border-t border-[#E2DDD7] px-4 py-4 sm:flex-row sm:px-6 sm:py-0 sm:h-16 md:px-12">
-        <p className="text-center font-[family-name:var(--font-literata)] text-[13px] text-[#A09A94] sm:text-left">
-          © 2026 Earth. Made with care in Chiang Rai.
-        </p>
-        <div className="flex gap-6">
-          {footerLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              target={link.href.startsWith("http") ? "_blank" : undefined}
-              rel={
-                link.href.startsWith("http") ? "noopener noreferrer" : undefined
-              }
-              className="font-[family-name:var(--font-literata)] text-[13px] text-[#A09A94] transition-colors hover:text-[#6B6560]"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
