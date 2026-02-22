@@ -32,3 +32,24 @@ body {
   color: var(--foreground);
   font-family: var(--font-literata), Georgia, serif;
 }
+
+/* Blog post drop cap - first letter of first paragraph */
+.blog-prose > p:first-of-type::first-letter {
+  float: left;
+  font-family: var(--font-playfair), serif;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 0.85;
+  color: var(--text-primary);
+  margin-right: 0.05em;
+}
+
+/* Code block syntax highlighting overrides (design: #1E1E1B bg, #A8C49A text) */
+.blog-prose pre code.hljs {
+  background: transparent;
+  padding: 0;
+}
+.blog-prose .hljs-comment,
+.blog-prose .hljs-quote {
+  color: #6b7e65;
+}
