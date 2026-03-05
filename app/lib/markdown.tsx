@@ -17,8 +17,8 @@ export const markdownComponents: Components = {
     </h3>
   ),
   pre: ({ children }) => (
-    <div className="my-6 overflow-x-auto rounded">
-      <pre className="bg-[#1E1E1B] p-5 pr-6 font-[family-name:var(--font-jetbrains)] text-[13px] leading-[1.6] text-[#A8C49A] sm:p-6 sm:pr-8">
+    <div className="my-6 overflow-x-auto rounded bg-[#1E1E1B]">
+      <pre className="p-5 pr-8 font-[family-name:var(--font-jetbrains)] text-[13px] leading-[1.6] text-[#A8C49A] sm:p-6 sm:pr-12">
         {children}
       </pre>
     </div>

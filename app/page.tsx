@@ -21,13 +21,13 @@ export default function Home() {
       <main className="flex flex-1 items-center justify-center py-12 sm:py-16 md:py-20">
         <div className="flex w-full max-w-[680px] flex-col items-center px-4 sm:px-6">
           {/* Photo */}
-          <div className="flex h-22 w-22 items-center justify-center overflow-hidden rounded-full border-2 border-[#E2DDD7] bg-[#EDEAE3]">
+          <div className="flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-2 border-[#E2DDD7] bg-[#EDEAE3] sm:h-36 sm:w-36">
             <Image
               src="/images/avatar.jpg"
               alt="Earth"
-              width={84}
-              height={84}
-              className="h-[84px] w-[84px] rounded-full object-cover"
+              width={144}
+              height={144}
+              className="h-32 w-32 rounded-full object-cover sm:h-36 sm:w-36"
             />
           </div>
           <div className="h-7 w-px" />
